@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7080588533946433480}
   - component: {fileID: 1119698047325973187}
   m_Layer: 0
-  m_Name: Square
+  m_Name: BasePipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865e3271c07525541ad2ab6f70ec273c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.1
+  _speed: 1.5
 --- !u!114 &2962120973272563186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1768f02aab122b40986801fb839b7d2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
