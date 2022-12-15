@@ -97,14 +97,14 @@ public class Pipe : MonoBehaviour
         grid.GetComponent<GameGrid>().StartSolving();
     }
 
-    public List<Pipe> ConnectedPipes()
+    public List<(Pipe, Direction)> ConnectedPipes()
     {
-        List<Pipe> connectedPipes = new List<Pipe>();
+        List<(Pipe, Direction)> connectedPipes = new List<(Pipe, Direction)>();
 
         foreach(KeyValuePair<Direction, Pipe> pipe in _neighbourPipes)
         {
             if (!pipe.Value.PathChecked && pipe.Value.GetConnectorValue(Pipe.GetOppositeDirection(pipe.Key)) && _connectors[pipe.Key])
-                connectedPipes.Add(pipe.Value);
+                connectedPipes.Add((pipe.Value, pipe.Key));
         }
 
         PathChecked = true;

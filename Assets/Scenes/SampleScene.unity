@@ -2110,6 +2110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LongPipe (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5305275452704432830, guid: b1e3a8eb42b8c3e40b263725ce18b256, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5613100943862925177, guid: b1e3a8eb42b8c3e40b263725ce18b256, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -76,4 +76,9 @@ public class WaterAnimation : MonoBehaviour
     {
         _endEvent.RemoveListener(method);
     }
+
+    public void StartFillingWater(Direction direction)
+    {
+
+    }
 }

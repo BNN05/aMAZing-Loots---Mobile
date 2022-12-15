@@ -6,9 +6,8 @@ public class GameGrid : MonoBehaviour
 {
 
     private List<List<Pipe>> _pipes;
-    private bool _gameFinished = false;
 
-    private List<Pipe> _winningWay = new List<Pipe>();
+    private List<(Pipe, Direction)> _winningWay = new List<(Pipe, Direction)>();
     private int _filledPipes = 0;
 
 
@@ -45,19 +44,19 @@ public class GameGrid : MonoBehaviour
 
     private bool TrySolve(Pipe nextPipe)
     {
-        List<Pipe> nextPipes = nextPipe.ConnectedPipes();
+        List<(Pipe, Direction)> nextPipes = nextPipe.ConnectedPipes();
 
         if (nextPipes.Count == 0)
             return false;
 
-        foreach(Pipe pipe in nextPipes)
+        foreach((Pipe, Direction) pipe in nextPipes)
         {
             _winningWay.Add(pipe);
 
-            if (pipe.TypePipe == Type.end && pipe.GetConnectorValue(Direction.right))
+            if (pipe.Item1.TypePipe == Type.end && pipe.Item1.GetConnectorValue(Direction.right))
                 return true;
 
-            if (TrySolve(pipe))
+            if (TrySolve(pipe.Item1))
                 return true;
             else
                 _winningWay.RemoveAt(_winningWay.Count - 1);
@@ -96,11 +95,10 @@ public class GameGrid : MonoBehaviour
             }
         }
 
-        _winningWay.Add(_pipes[0][0]);
+        _winningWay.Add((_pipes[0][0], Direction.right));
         if (TrySolve(_pipes[0][0]))
         {
-            StartWaterAnimation(_winningWay[0]);
-            Debug.Log("SOLVED");
+            StartWaterAnimation(_winningWay[0].Item1, Direction.right);
         }
         else
         {
@@ -116,21 +114,20 @@ public class GameGrid : MonoBehaviour
         }
     }
 
-    private void StartWaterAnimation(Pipe pipe)
+    private void StartWaterAnimation(Pipe pipe, Direction direction)
     {
         WaterAnimation waterAnimation = pipe.GetComponent<WaterAnimation>();
         waterAnimation.AddListenerOnEnd(PlayNextPipe);
-        waterAnimation.waterComing = true;
+        waterAnimation.StartFillingWater(direction);
     }
-
 
     private void PlayNextPipe()
     {
-         _winningWay[_filledPipes].GetComponent<WaterAnimation>().RemoveListenerOnEnd(PlayNextPipe);
+         _winningWay[_filledPipes].Item1.GetComponent<WaterAnimation>().RemoveListenerOnEnd(PlayNextPipe);
         
         _filledPipes += 1;
         if (_filledPipes < _winningWay.Count)
-            StartWaterAnimation(_winningWay[_filledPipes]);
+            StartWaterAnimation(_winningWay[_filledPipes].Item1, _winningWay[_filledPipes].Item2);
         else
             Debug.Log("Finished flling");
     }
