@@ -79,6 +79,29 @@ public class WaterAnimation : MonoBehaviour
 
     public void StartFillingWater(Direction direction)
     {
+        waterComing = true;
+        switch (direction)
+        {
+            case Direction.up:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                }
+                break;
 
+            case Direction.left:
+                break;
+
+            case Direction.down:
+                break;
+
+            case Direction.right:
+                break;
+
+            case Direction.none:
+                break;
+
+            default:
+                break;
+        }
     }
 }
