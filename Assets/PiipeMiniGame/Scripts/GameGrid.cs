@@ -39,7 +39,21 @@ public class GameGrid : MonoBehaviour
 
     private bool TrySolve(Pipe nextPipe)
     {
-        
+        List<Pipe> nextPipes = nextPipe.ConnectedPipes();
+
+        if (nextPipes.Count == 0)
+            return false;
+
+        foreach(Pipe pipe in nextPipes)
+        {
+            if (pipe.TypePipe == Type.end && pipe.GetConnectorValue(Direction.right))
+                return true;
+
+            if (TrySolve(pipe))
+                return true;
+        }
+
+        return false;
     }
 
     private void InitializeGrid()
@@ -57,6 +71,32 @@ public class GameGrid : MonoBehaviour
                     _pipes[i].Add(tranformPipe.GetComponent<Pipe>());
                 else
                     _pipes[i].Add(null);
+            }
+        }
+    }
+
+    public void StartSolving()
+    {
+        foreach(var pipes in _pipes)
+        {
+            foreach(var pipe in pipes)
+            {
+                pipe.StopAllRotation();
+            }
+        }
+
+        if (TrySolve(_pipes[0][0]))
+            Debug.Log("SOLVED");
+
+        else
+        {
+            foreach (var pipes in _pipes)
+            {
+                foreach (var pipe in pipes)
+                {
+                    pipe.ResetPathChecked();
+                    pipe.ResumeAllRotation();
+                }
             }
         }
     }
