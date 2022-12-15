@@ -33,8 +33,13 @@ public class Pipe : MonoBehaviour
 
     private RectTransform _parentRectTranform;
 
+    public bool PathChecked { get; private set; }
+
+
     [SerializeField]
-    private Type typePipe = Type.none;
+    private Type _typePipe = Type.none;
+
+    public Type TypePipe { get { return _typePipe; } private set { } }
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +93,8 @@ public class Pipe : MonoBehaviour
     private void OnRotation()
     {
         SetCorrectDirection(90);
+        GameObject grid = GameObject.FindGameObjectWithTag("Grid");
+        grid.GetComponent<GameGrid>().StartSolving();
     }
 
     public List<Pipe> ConnectedPipes()
@@ -96,11 +103,50 @@ public class Pipe : MonoBehaviour
 
         foreach(KeyValuePair<Direction, Pipe> pipe in _neighbourPipes)
         {
+            if (!pipe.Value.PathChecked && pipe.Value.GetConnectorValue(Pipe.GetOppositeDirection(pipe.Key)) && _connectors[pipe.Key])
+                connectedPipes.Add(pipe.Value);
         }
 
+        PathChecked = true;
         return connectedPipes;
     }
 
+    public bool GetConnectorValue(Direction direction)
+    {
+        return _connectors[direction];
+    }
+
+    public static Direction GetOppositeDirection(Direction initialDirection)
+    {
+        switch(initialDirection)
+        {
+            case Direction.up:
+                return Direction.down;
+            case Direction.down:
+                return Direction.up;
+            case Direction.left:
+                return Direction.right;
+            case Direction.right:
+                return Direction.left;
+            default:
+                return Direction.none;
+        }
+    }
+
+    public void ResetPathChecked()
+    {
+        PathChecked = false;
+    }
+
+    public void StopAllRotation()
+    {
+        this.GetComponent<MakeRotate>().BlockRotation();
+    }
+
+    public void ResumeAllRotation()
+    {
+        this.GetComponent<MakeRotate>().ResumeRotation();
+    }
 
 }
 

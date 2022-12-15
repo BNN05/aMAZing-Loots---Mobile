@@ -13,6 +13,7 @@ public class MakeRotate : MonoBehaviour
     private float _count = 0.0f;
 
     private UnityEvent _onRotation = new UnityEvent();
+    private bool _blocked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,9 @@ public class MakeRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_blocked)
+            return;
+
         if (Input.touchCount > 0)
         {
             Touch touchInfo = Input.GetTouch(0);
@@ -63,5 +67,14 @@ public class MakeRotate : MonoBehaviour
     public void RemoveListenerOnRotation(UnityAction method)
     {
         _onRotation.RemoveListener(method);
+    }
+
+    public void BlockRotation()
+    {
+        _blocked = true;
+    }
+    public void ResumeRotation()
+    {
+        _blocked = false;
     }
 }
