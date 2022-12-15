@@ -26,15 +26,20 @@ public class GameGrid : MonoBehaviour
             for (int y = 0; y < _pipes[i].Count; y++)
             {
                 if (i > 0)
-                    _pipes[i][y].AddNeighbourPipe(_pipes[i - 1][y], direction.up);
+                    _pipes[i][y].AddNeighbourPipe(_pipes[i - 1][y], Direction.up);
                 if (i < (_pipes.Count - 1))
-                    _pipes[i][y].AddNeighbourPipe(_pipes[i + 1][y], direction.down);
+                    _pipes[i][y].AddNeighbourPipe(_pipes[i + 1][y], Direction.down);
                 if (y > 0)
-                    _pipes[i][y].AddNeighbourPipe(_pipes[i][y - 1], direction.left);
+                    _pipes[i][y].AddNeighbourPipe(_pipes[i][y - 1], Direction.left);
                 if (y < (_pipes[i].Count - 1))
-                    _pipes[i][y].AddNeighbourPipe(_pipes[i][y + 1], direction.right);
+                    _pipes[i][y].AddNeighbourPipe(_pipes[i][y + 1], Direction.right);
             }
         }
+    }
+
+    private bool TrySolve(Pipe nextPipe)
+    {
+        
     }
 
     private void InitializeGrid()

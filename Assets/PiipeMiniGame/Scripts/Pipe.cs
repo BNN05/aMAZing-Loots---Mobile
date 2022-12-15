@@ -3,40 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum direction
+public enum Direction
 {
     up,
     left,
     down,
-    right
+    right,
+    none
+}
+
+public enum Type
+{
+    start,
+    end,
+    none
 }
 
 public class Pipe : MonoBehaviour
 {
 
-    private Dictionary<direction, Pipe> _neighbourPipes = new Dictionary<direction, Pipe>();
+    private Dictionary<Direction, Pipe> _neighbourPipes = new Dictionary<Direction, Pipe>();
 
-    private Dictionary<direction, bool> _connectors = new Dictionary<direction, bool>();
+    private Dictionary<Direction, bool> _connectors = new Dictionary<Direction, bool>();
 
     [SerializeField]
-    private List<direction> _baseActiveConnectors = new List<direction>();
+    private List<Direction> _baseActiveConnectors = new List<Direction>();
 
     private bool _initialized = false;
 
     private RectTransform _parentRectTranform;
 
+    [SerializeField]
+    private Type typePipe = Type.none;
+
     // Start is called before the first frame update
     void Start()
     {
         _parentRectTranform = this.GetComponentInParent<RectTransform>();
-        _connectors.Add(direction.up,  false);
-        _connectors.Add(direction.left,    false);
-        _connectors.Add(direction.down,  false);
-        _connectors.Add(direction.right, false);
+        _connectors.Add(Direction.up,  false);
+        _connectors.Add(Direction.left,    false);
+        _connectors.Add(Direction.down,  false);
+        _connectors.Add(Direction.right, false);
 
         this.GetComponent<MakeRotate>().AddListenerOnRotation(OnRotation);
 
-        foreach (direction connectedDirection in _baseActiveConnectors)
+        foreach (Direction connectedDirection in _baseActiveConnectors)
         {
             _connectors[connectedDirection] = true;
         }
@@ -53,10 +64,9 @@ public class Pipe : MonoBehaviour
 
         if (!_initialized)
             return;
-
     }
 
-    public void AddNeighbourPipe(Pipe neighbour, direction direction)
+    public void AddNeighbourPipe(Pipe neighbour, Direction direction)
     {
         _neighbourPipes.Add(direction, neighbour);
     }
@@ -66,7 +76,7 @@ public class Pipe : MonoBehaviour
         if (rotationInDegree <= 0)
             return;
 
-        List<direction> directions = new List<direction>(_connectors.Keys);
+        List<Direction> directions = new List<Direction>(_connectors.Keys);
         List<bool>      activeDirections = new List<bool>(_connectors.Values);
 
         for(int i = 0; i < directions.Count; i++)
@@ -79,6 +89,19 @@ public class Pipe : MonoBehaviour
     {
         SetCorrectDirection(90);
     }
+
+    public List<Pipe> ConnectedPipes()
+    {
+        List<Pipe> connectedPipes = new List<Pipe>();
+
+        foreach(KeyValuePair<Direction, Pipe> pipe in _neighbourPipes)
+        {
+        }
+
+        return connectedPipes;
+    }
+
+
 }
 
 
