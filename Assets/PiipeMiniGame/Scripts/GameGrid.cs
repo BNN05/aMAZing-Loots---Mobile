@@ -6,8 +6,14 @@ public class GameGrid : MonoBehaviour
 {
 
     private List<List<Pipe>> _pipes;
+    private bool _gameFinished = false;
+
+    private List<Pipe> _winningWay = new List<Pipe>();
+    private int _filledPipes = 0;
+
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         InitializeGrid();
         InitializePipes();
@@ -46,11 +52,16 @@ public class GameGrid : MonoBehaviour
 
         foreach(Pipe pipe in nextPipes)
         {
+            _winningWay.Add(pipe);
+
             if (pipe.TypePipe == Type.end && pipe.GetConnectorValue(Direction.right))
                 return true;
 
             if (TrySolve(pipe))
                 return true;
+            else
+                _winningWay.RemoveAt(_winningWay.Count - 1);
+
         }
 
         return false;
@@ -85,11 +96,15 @@ public class GameGrid : MonoBehaviour
             }
         }
 
+        _winningWay.Add(_pipes[0][0]);
         if (TrySolve(_pipes[0][0]))
+        {
+            StartWaterAnimation(_winningWay[0]);
             Debug.Log("SOLVED");
-
+        }
         else
         {
+            _winningWay.RemoveAt(0);
             foreach (var pipes in _pipes)
             {
                 foreach (var pipe in pipes)
@@ -99,5 +114,24 @@ public class GameGrid : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void StartWaterAnimation(Pipe pipe)
+    {
+        WaterAnimation waterAnimation = pipe.GetComponent<WaterAnimation>();
+        waterAnimation.AddListenerOnEnd(PlayNextPipe);
+        waterAnimation.waterComing = true;
+    }
+
+
+    private void PlayNextPipe()
+    {
+         _winningWay[_filledPipes].GetComponent<WaterAnimation>().RemoveListenerOnEnd(PlayNextPipe);
+        
+        _filledPipes += 1;
+        if (_filledPipes < _winningWay.Count)
+            StartWaterAnimation(_winningWay[_filledPipes]);
+        else
+            Debug.Log("Finished flling");
     }
 }

@@ -10,7 +10,7 @@ public class WaterAnimation : MonoBehaviour
     // Start is called before the first frame update
     public Image water;
 
-    public UnityEvent endEvent = new UnityEvent();
+    private UnityEvent _endEvent = new UnityEvent();
 
     public bool waterComing;
     public bool comingFromUp;
@@ -21,7 +21,7 @@ public class WaterAnimation : MonoBehaviour
     {
         water.fillAmount = 0;
         if (isTube)
-            water.fillMethod = Image.FillMethod.Vertical;
+            water.fillMethod = Image.FillMethod.Horizontal;
         else
         {
             water.fillMethod = Image.FillMethod.Radial90;
@@ -57,7 +57,7 @@ public class WaterAnimation : MonoBehaviour
 
             if (water.fillAmount >= 1 && !isFilled)
             {
-                endEvent.Invoke();
+                _endEvent.Invoke();
                 isFilled = true;
             }
         }
@@ -65,5 +65,15 @@ public class WaterAnimation : MonoBehaviour
         {
             water.fillAmount -= Mathf.Clamp(1 * Time.deltaTime, 0, 1);
         }
+    }
+
+    public void AddListenerOnEnd(UnityAction method)
+    {
+        _endEvent.AddListener(method);
+    }
+
+    public void RemoveListenerOnEnd(UnityAction method)
+    {
+        _endEvent.RemoveListener(method);
     }
 }

@@ -8,35 +8,35 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c42f55c4de5ceb64ead528e7de46cfde, type: 3}
+      objectReference: {fileID: 21300000, guid: 00d3f02c60ad4624ca1f297535a4c892, type: 3}
+    - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1274187264805647469, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Name
-      value: LongPipe
+      value: FourPipe
       objectReference: {fileID: 0}
     - target: {fileID: 1914155350218507281, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: water
       value: 
       objectReference: {fileID: 5563469186320550124}
-    - target: {fileID: 1914155350218507281, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
-      propertyPath: isTube
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: _baseActiveConnectors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
-      propertyPath: _baseActiveConnectors.Array.data[0]
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: _baseActiveConnectors.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.data[3]
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dfeafe02d3c770448858974027400492, type: 3}
+      objectReference: {fileID: 21300000, guid: d4945a7b3ec243f4c9a4bc6300e85086, type: 3}
     - target: {fileID: 5534321297007871760, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -129,6 +129,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5534321297007871760, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964258901390557834, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

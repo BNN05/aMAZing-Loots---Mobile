@@ -7,37 +7,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
-      propertyPath: m_Type
-      value: 0
+    - target: {fileID: 799489606713305588, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c42f55c4de5ceb64ead528e7de46cfde, type: 3}
+      objectReference: {fileID: 21300000, guid: 1b3fd8fce315c5746b7bd04a0e36d911, type: 3}
     - target: {fileID: 1274187264805647469, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Name
-      value: LongPipe
+      value: TriPipe
       objectReference: {fileID: 0}
     - target: {fileID: 1914155350218507281, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: water
       value: 
       objectReference: {fileID: 5563469186320550124}
     - target: {fileID: 1914155350218507281, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
-      propertyPath: isTube
-      value: 1
+      propertyPath: waterComing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: _baseActiveConnectors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
-      propertyPath: _baseActiveConnectors.Array.data[0]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: _baseActiveConnectors.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.data[2]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281287557650262314, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281287557650262314, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_OverrideSorting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226561087215280855, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Type
@@ -46,7 +58,19 @@ PrefabInstance:
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dfeafe02d3c770448858974027400492, type: 3}
+      objectReference: {fileID: 21300000, guid: 45c0558e706351b42818d4604b1b8013, type: 3}
+    - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5534321297007871760, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -130,6 +154,22 @@ PrefabInstance:
     - target: {fileID: 5534321297007871760, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457786526436593667, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996895626042418367, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996895626042418367, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996895626042418367, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
