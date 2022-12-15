@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1274187264805647457}
   - component: {fileID: 7080588533946433480}
   - component: {fileID: 1119698047325973187}
+  - component: {fileID: 3123095657588149510}
   m_Layer: 0
   m_Name: BasePipe
   m_TagString: Untagged
@@ -53,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865e3271c07525541ad2ab6f70ec273c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.5
+  _speed: 2.5
 --- !u!114 &2962120973272563186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,3 +133,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3123095657588149510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274187264805647469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1140ea7f783b947985c58d7abb3cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

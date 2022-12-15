@@ -13,7 +13,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c42f55c4de5ceb64ead528e7de46cfde, type: 3}
     - target: {fileID: 1274187264805647469, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Name
-      value: Square
+      value: LongPipe
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5534321297007871760, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Pivot.x

@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurnPipe
       objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _baseActiveConnectors.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5534321297007871760, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
