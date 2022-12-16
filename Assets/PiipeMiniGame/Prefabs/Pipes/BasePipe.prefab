@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 1119698047325973187}
   - component: {fileID: 3123095657588149510}
   - component: {fileID: 1914155350218507281}
+  - component: {fileID: -4266847399594788925}
   m_Layer: 0
   m_Name: BasePipe
   m_TagString: Untagged
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2.5
+  _rotateBack: 0
 --- !u!114 &2962120973272563186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +268,21 @@ MonoBehaviour:
   waterComing: 0
   comingFromUp: 0
   isTube: 0
+--- !u!114 &-4266847399594788925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274187264805647469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -1.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7457786526436593667
 GameObject:
   m_ObjectHideFlags: 0
