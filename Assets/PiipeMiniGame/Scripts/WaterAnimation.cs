@@ -98,10 +98,7 @@ public class WaterAnimation : MonoBehaviour
             case Direction.down:
                 if (water.fillMethod == Image.FillMethod.Horizontal)
                 {
-                    if ((rotation % 360) == 180)
                         water.fillOrigin = 1;
-                    else 
-                        water.fillOrigin = 0;
                 }
                 break;
 
@@ -130,10 +127,7 @@ public class WaterAnimation : MonoBehaviour
             case Direction.up:
                 if (water.fillMethod == Image.FillMethod.Horizontal)
                 {
-                    if ((rotation % 360) > 180)
-                        water.fillOrigin = 0;
-                    else
-                        water.fillOrigin = 1;
+                    water.fillOrigin = 0;
                 }
                 break;
 
@@ -169,9 +163,6 @@ public class WaterAnimation : MonoBehaviour
             case Direction.right:
                 if (water.fillMethod == Image.FillMethod.Horizontal)
                 {
-                    if ((rotation % 360) > 180)
-                        water.fillOrigin = 1;
-                    else
                         water.fillOrigin = 0;
                 }
                 break;
@@ -187,9 +178,6 @@ public class WaterAnimation : MonoBehaviour
             case Direction.left:
                 if (water.fillMethod == Image.FillMethod.Horizontal)
                 {
-                    if ((rotation % 360) > 180)
-                        water.fillOrigin = 0;
-                    else
                         water.fillOrigin = 1;
                 }
                 break;

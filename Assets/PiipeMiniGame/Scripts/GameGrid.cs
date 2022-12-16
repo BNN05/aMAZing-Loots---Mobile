@@ -95,11 +95,8 @@ public class GameGrid : MonoBehaviour
             }
         }
 
-        if (_pipes[0][0].GetConnectorValue(Direction.left) == false)
-            return;
-
         _winningWay.Add((_pipes[0][0], Direction.right));
-        if (TrySolve(_pipes[0][0]))
+        if (_pipes[0][0].GetConnectorValue(Direction.left) != false && TrySolve(_pipes[0][0]))
         {
             StartWaterAnimation(_winningWay[0].Item1, Direction.right, Direction.left);
         }

@@ -16,6 +16,7 @@ public class MakeRotate : MonoBehaviour
     private bool _blocked = false;
 
     public bool _rotateBack = false;
+    private bool _rotatingBackward = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,11 +53,21 @@ public class MakeRotate : MonoBehaviour
             float angle = Quaternion.Angle(transform.rotation, _objectiveRot); 
             if (angle <= 1)
             {
-                transform.Rotate(0, 0, angle);
-                if (_rotateBack && transform.rotation.eulerAngles.z == 90)
-                    _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - 90);
+                if (!_rotatingBackward)
+                    transform.Rotate(0, 0, angle);
                 else
+                    transform.Rotate(0, 0, -angle);
+
+                if (_rotateBack && Mathf.Round(transform.rotation.eulerAngles.z) == 90)
+                {
+                    _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - 90);
+                    _rotatingBackward = true;
+                }
+                else
+                {
                     _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 90);
+                    _rotatingBackward = false;
+                }
                 _count = 0.0f;
                 _rotating = false;
                 _onRotation.Invoke();
