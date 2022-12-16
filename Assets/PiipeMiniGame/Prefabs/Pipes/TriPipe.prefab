@@ -65,6 +65,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: m_FillClockwise
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}

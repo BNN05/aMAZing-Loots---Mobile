@@ -15,6 +15,8 @@ public class MakeRotate : MonoBehaviour
     private UnityEvent _onRotation = new UnityEvent();
     private bool _blocked = false;
 
+    public bool _rotateBack = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +53,10 @@ public class MakeRotate : MonoBehaviour
             if (angle <= 1)
             {
                 transform.Rotate(0, 0, angle);
-                _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 90);
+                if (_rotateBack && transform.rotation.eulerAngles.z == 90)
+                    _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - 90);
+                else
+                    _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 90);
                 _count = 0.0f;
                 _rotating = false;
                 _onRotation.Invoke();

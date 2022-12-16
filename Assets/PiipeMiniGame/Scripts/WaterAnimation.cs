@@ -20,13 +20,6 @@ public class WaterAnimation : MonoBehaviour
     private void Start()
     {
         water.fillAmount = 0;
-        if (isTube)
-            water.fillMethod = Image.FillMethod.Horizontal;
-        else
-        {
-            water.fillMethod = Image.FillMethod.Radial90;
-            water.fillOrigin = 1;
-        }
     }
 
     // Update is called once per fram
@@ -39,20 +32,6 @@ public class WaterAnimation : MonoBehaviour
     {
         if (waterComing)
         {
-            if (comingFromUp)
-            {
-                if (isTube)
-                    water.fillOrigin = 1;
-                else
-                    water.fillClockwise = true;
-            }
-            else
-            {
-                if (isTube)
-                    water.fillOrigin = 0;
-                else
-                    water.fillClockwise = false;
-            }
             water.fillAmount += 1 * Time.deltaTime;
 
             if (water.fillAmount >= 1 && !isFilled)
@@ -77,27 +56,156 @@ public class WaterAnimation : MonoBehaviour
         _endEvent.RemoveListener(method);
     }
 
-    public void StartFillingWater(Direction direction)
+    public void StartFillingWater(Direction direction, Direction origin, float rotation)
     {
-        waterComing = true;
-        switch (direction)
+        switch (origin)
         {
             case Direction.up:
-                if (water.fillMethod == Image.FillMethod.Radial90)
-                {
-                }
+                FillFromUp(direction, rotation);
                 break;
 
             case Direction.left:
+                FillFromLeft(direction, rotation);
+                //if (water.fillMethod == Image.FillMethod.Radial90)
+                //    water.fillOrigin = (int)Image.Origin90.TopLeft;
                 break;
 
             case Direction.down:
+                FillFromDown(direction, rotation);
                 break;
 
             case Direction.right:
+                FillFromRight(direction, rotation);
                 break;
 
-            case Direction.none:
+            default:
+                break;
+        }
+        waterComing = true;
+    }
+
+    private void FillFromUp(Direction direction, float rotation)
+    {
+        switch (direction)
+        {
+            case Direction.left:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = true;
+                }
+                break;
+
+            case Direction.down:
+                if (water.fillMethod == Image.FillMethod.Horizontal)
+                {
+                    if ((rotation % 360) == 180)
+                        water.fillOrigin = 1;
+                    else 
+                        water.fillOrigin = 0;
+                }
+                break;
+
+            case Direction.right:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = false;
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+    private void FillFromDown(Direction direction, float rotation)
+    {
+        switch (direction)
+        {
+            case Direction.left:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = false;
+                }
+                break;
+
+            case Direction.up:
+                if (water.fillMethod == Image.FillMethod.Horizontal)
+                {
+                    if ((rotation % 360) > 180)
+                        water.fillOrigin = 0;
+                    else
+                        water.fillOrigin = 1;
+                }
+                break;
+
+            case Direction.right:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = true;
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+    private void FillFromLeft(Direction direction, float rotation)
+    {
+        switch (direction)
+        {
+            case Direction.down:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = true;
+                }
+                break;
+
+            case Direction.up:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = false;
+                }
+                break;
+
+            case Direction.right:
+                if (water.fillMethod == Image.FillMethod.Horizontal)
+                {
+                    if ((rotation % 360) > 180)
+                        water.fillOrigin = 1;
+                    else
+                        water.fillOrigin = 0;
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+    private void FillFromRight(Direction direction, float rotation)
+    {
+        switch (direction)
+        {
+            case Direction.left:
+                if (water.fillMethod == Image.FillMethod.Horizontal)
+                {
+                    if ((rotation % 360) > 180)
+                        water.fillOrigin = 0;
+                    else
+                        water.fillOrigin = 1;
+                }
+                break;
+
+            case Direction.up:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = false;
+                }
+                break;
+
+            case Direction.down:
+                if (water.fillMethod == Image.FillMethod.Radial90)
+                {
+                    water.fillClockwise = false;
+                }
                 break;
 
             default:

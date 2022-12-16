@@ -95,10 +95,13 @@ public class GameGrid : MonoBehaviour
             }
         }
 
+        if (_pipes[0][0].GetConnectorValue(Direction.left) == false)
+            return;
+
         _winningWay.Add((_pipes[0][0], Direction.right));
         if (TrySolve(_pipes[0][0]))
         {
-            StartWaterAnimation(_winningWay[0].Item1, Direction.right);
+            StartWaterAnimation(_winningWay[0].Item1, Direction.right, Direction.left);
         }
         else
         {
@@ -114,11 +117,11 @@ public class GameGrid : MonoBehaviour
         }
     }
 
-    private void StartWaterAnimation(Pipe pipe, Direction direction)
+    private void StartWaterAnimation(Pipe pipe, Direction direction, Direction origin)
     {
         WaterAnimation waterAnimation = pipe.GetComponent<WaterAnimation>();
         waterAnimation.AddListenerOnEnd(PlayNextPipe);
-        waterAnimation.StartFillingWater(direction);
+        waterAnimation.StartFillingWater(direction, origin, pipe.GetComponent<RectTransform>().rotation.eulerAngles.z);
     }
 
     private void PlayNextPipe()
@@ -126,8 +129,11 @@ public class GameGrid : MonoBehaviour
          _winningWay[_filledPipes].Item1.GetComponent<WaterAnimation>().RemoveListenerOnEnd(PlayNextPipe);
         
         _filledPipes += 1;
-        if (_filledPipes < _winningWay.Count)
-            StartWaterAnimation(_winningWay[_filledPipes].Item1, _winningWay[_filledPipes].Item2);
+        if (_filledPipes < _winningWay.Count - 1)
+            StartWaterAnimation(_winningWay[_filledPipes].Item1, _winningWay[_filledPipes + 1].Item2, Pipe.GetOppositeDirection(_winningWay[_filledPipes].Item2));
+        
+        if (_filledPipes == _winningWay.Count - 1)
+            StartWaterAnimation(_winningWay[_filledPipes].Item1, Direction.right, Pipe.GetOppositeDirection(_winningWay[_filledPipes].Item2));
         else
             Debug.Log("Finished flling");
     }
