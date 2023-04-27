@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class GameGrid : MonoBehaviour
 {
+    [SerializeField]
+    private WebSocketClient ws;
 
     private List<List<Pipe>> _pipes;
 
     private List<(Pipe, Direction)> _winningWay = new List<(Pipe, Direction)>();
     private int _filledPipes = 0;
-
 
     // Start is called before the first frame update
     private void Start()
@@ -19,9 +20,8 @@ public class GameGrid : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
     private void InitializePipes()
@@ -49,7 +49,7 @@ public class GameGrid : MonoBehaviour
         if (nextPipes.Count == 0)
             return false;
 
-        foreach((Pipe, Direction) pipe in nextPipes)
+        foreach ((Pipe, Direction) pipe in nextPipes)
         {
             _winningWay.Add(pipe);
 
@@ -60,7 +60,6 @@ public class GameGrid : MonoBehaviour
                 return true;
             else
                 _winningWay.RemoveAt(_winningWay.Count - 1);
-
         }
 
         return false;
@@ -87,9 +86,9 @@ public class GameGrid : MonoBehaviour
 
     public void StartSolving()
     {
-        foreach(var pipes in _pipes)
+        foreach (var pipes in _pipes)
         {
-            foreach(var pipe in pipes)
+            foreach (var pipe in pipes)
             {
                 pipe.StopAllRotation();
             }
@@ -123,15 +122,17 @@ public class GameGrid : MonoBehaviour
 
     private void PlayNextPipe()
     {
-         _winningWay[_filledPipes].Item1.GetComponent<WaterAnimation>().RemoveListenerOnEnd(PlayNextPipe);
-        
+        _winningWay[_filledPipes].Item1.GetComponent<WaterAnimation>().RemoveListenerOnEnd(PlayNextPipe);
+
         _filledPipes += 1;
         if (_filledPipes < _winningWay.Count - 1)
             StartWaterAnimation(_winningWay[_filledPipes].Item1, _winningWay[_filledPipes + 1].Item2, Pipe.GetOppositeDirection(_winningWay[_filledPipes].Item2));
-        
+
         if (_filledPipes == _winningWay.Count - 1)
             StartWaterAnimation(_winningWay[_filledPipes].Item1, Direction.right, Pipe.GetOppositeDirection(_winningWay[_filledPipes].Item2));
         else
-            Debug.Log("Finished flling");
+        {
+            ws.SendMessage("Aie ca coule :o !!!!");
+        }
     }
 }
