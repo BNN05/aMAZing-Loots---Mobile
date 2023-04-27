@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,7 @@ public class GyroMap : MonoBehaviour
     private int largeur;
     private int longueur;
     public bool set;
+    private string path;
 
     public GyroMap(int largeur, int longueur)
     {
@@ -33,6 +35,7 @@ public class GyroMap : MonoBehaviour
     }
     private void Start()
     {
+        path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\testGyroMap.txt";
         if (set)
         {
             CreateMap(10, 10);
@@ -49,17 +52,15 @@ public class GyroMap : MonoBehaviour
         }
         else
         {
-            string t = "C:" + @"\" + "Users" + @"\" + "bn" + @"\" + "Documents" + @"\" + "test.txt";
-            map = JsonConvert.DeserializeObject<int[,]>(File.ReadAllText(t));
+            map = JsonConvert.DeserializeObject<int[,]>(File.ReadAllText(path));
             LoadMap();
         }
 
     }
     public void SaveMap() {
-        string t = "C:" +@"\"+"Users" + @"\" + "bn" + @"\" +"Documents" + @"\" +"test.txt";
         string m = JsonConvert.SerializeObject(this.map);
         
-        File.WriteAllText(t, m);
+        File.WriteAllText(path, m);
     }
 
     public void LoadMap()
