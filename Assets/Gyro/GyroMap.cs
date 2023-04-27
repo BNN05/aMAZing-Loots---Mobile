@@ -12,10 +12,11 @@ public class GyroMap : MonoBehaviour
     private int longueur;
     public bool set;
     private string path;
+    public GameObject mapEmptyObject;
 
     public GyroMap(int largeur, int longueur)
     {
-        this.map = new int [largeur, longueur];
+        this.map = new int[largeur, longueur];
         this.largeur = largeur;
         this.longueur = longueur;
     }
@@ -25,14 +26,16 @@ public class GyroMap : MonoBehaviour
         this.map = new int[largeur, longueur];
     }
 
-    public int GetCase(int x, int y) {
+    public int GetCase(int x, int y)
+    {
         return map[x, y];
     }
 
-    public void SetCase(int value, int x,int y)
+    public void SetCase(int value, int x, int y)
     {
         map[x, y] = value;
     }
+
     private void Start()
     {
         path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\testGyroMap.txt";
@@ -55,27 +58,43 @@ public class GyroMap : MonoBehaviour
             map = JsonConvert.DeserializeObject<int[,]>(File.ReadAllText(path));
             LoadMap();
         }
-
     }
-    public void SaveMap() {
+
+    public void SaveMap()
+    {
         string m = JsonConvert.SerializeObject(this.map);
-        
+
         File.WriteAllText(path, m);
     }
 
     public void LoadMap()
     {
+        float midBoardX = map.GetLength(0) / 2;
+        float midBoardY = map.GetLength(1) / 2;
+        mapEmptyObject.transform.position = new Vector3(midBoardX, 0, midBoardY);
         for (int i = 0; i < map.GetLength(0); i++)
         {
             for (int j = 0; j < map.GetLength(1); j++)
             {
-                if(map[i,j] == 1)
+                if (map[i, j] == 1)
                 {
                     var t = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     t.transform.position = new Vector3(i, 0, j);
-
+                    t.transform.parent = mapEmptyObject.transform;
                 }
-
+                if (map[i, j] == 2)
+                {
+                    var t = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    t.transform.position = new Vector3(i, -1, j);
+                    t.transform.parent = mapEmptyObject.transform;
+                    t.GetComponent<Renderer>().material.color = Color.red;
+                }
+                else
+                {
+                    var tr = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    tr.transform.position = new Vector3(i, -1, j);
+                    tr.transform.parent = mapEmptyObject.transform;
+                }
             }
         }
     }
@@ -91,5 +110,4 @@ public class GyroMap : MonoBehaviour
             }
         }
     }
-
 }
