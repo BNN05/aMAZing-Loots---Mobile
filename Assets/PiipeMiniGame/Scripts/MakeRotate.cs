@@ -24,6 +24,11 @@ public class MakeRotate : MonoBehaviour
         _objectiveRot = Quaternion.Euler(0, 0, 90);
     }
 
+    public void ForceRotation()
+    {
+        _rotating = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
