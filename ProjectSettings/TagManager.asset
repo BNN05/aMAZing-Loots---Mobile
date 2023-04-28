@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Grid
+  - WP1
+  - WP2
+  - WP3
+  - WP4
   layers:
   - Default
   - TransparentFX
