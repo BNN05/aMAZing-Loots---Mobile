@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WireManager : MonoBehaviour
 {
     public static WireManager instance;
     public List<Wire> wire;
+
+    [SerializeField]
+    private Text gameOver;
+
+    [SerializeField]
+    private Text WinUI;
 
     private void Awake()
     {
@@ -27,11 +34,11 @@ public class WireManager : MonoBehaviour
 
     private void Win()
     {
-        Debug.Log("Win");
+        WinUI.gameObject.SetActive(true);
     }
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
+        gameOver.gameObject.SetActive(true);
     }
 }
