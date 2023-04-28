@@ -27,5 +27,11 @@ public class WireManager : MonoBehaviour
 
     private void Win()
     {
+        Debug.Log("Win");
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
     }
 }

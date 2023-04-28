@@ -45,6 +45,10 @@ public class Wire : MonoBehaviour
                     completed = true;
                     WireManager.instance.CheckIfAllCompleted();
                 }
+                else
+                {
+                    WireManager.instance.GameOver();
+                }
             }
             else
             {
