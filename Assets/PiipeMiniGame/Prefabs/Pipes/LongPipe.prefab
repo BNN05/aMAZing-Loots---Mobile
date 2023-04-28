@@ -24,6 +24,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5563469186320550124}
     - target: {fileID: 1914155350218507281, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914155350218507281, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: isTube
       value: 1
       objectReference: {fileID: 0}
@@ -141,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8641321466566082448, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: _rotateBack
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}

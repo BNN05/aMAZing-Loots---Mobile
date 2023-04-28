@@ -76,15 +76,6 @@ public class Pipe : MonoBehaviour
 
         if (!_initialized)
             return;
-
-        //if (!_gameGrid.IsPlaying)
-        //{
-        //    StopAllRotation();
-        //}
-        //else if (_gameGrid.IsPlaying && !_gameGrid.IsSolving)
-        //{
-        //    ResumeAllRotation();
-        //}
     }
 
     public void AddNeighbourPipe(Pipe neighbour, Direction direction)

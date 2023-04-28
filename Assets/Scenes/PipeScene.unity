@@ -687,7 +687,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.4465685
+  orthographic size: 13.97318
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2266,6 +2266,10 @@ PrefabInstance:
     - target: {fileID: 1190838048775320580, guid: 7bedc883b6dd415458735308c3eebdf4, type: 3}
       propertyPath: m_Name
       value: TriPipe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997368778717168760, guid: 7bedc883b6dd415458735308c3eebdf4, type: 3}
+      propertyPath: _speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997368778717168760, guid: 7bedc883b6dd415458735308c3eebdf4, type: 3}
       propertyPath: waterComing
