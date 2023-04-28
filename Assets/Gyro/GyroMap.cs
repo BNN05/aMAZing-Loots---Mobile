@@ -13,6 +13,7 @@ public class GyroMap : MonoBehaviour
     public bool set;
     private string path;
     public GameObject mapEmptyObject;
+    public List<GameObject> cubes = new List<GameObject>();
 
     public GyroMap(int largeur, int longueur)
     {
@@ -78,16 +79,21 @@ public class GyroMap : MonoBehaviour
             {
                 if (map[i, j] == 1)
                 {
-                    var t = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    var t = Instantiate(cubes[0]);
                     t.transform.position = new Vector3(i, 0, j);
                     t.transform.parent = mapEmptyObject.transform;
                 }
                 if (map[i, j] == 2)
                 {
-                    var t = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    var t = Instantiate(cubes[1]);
                     t.transform.position = new Vector3(i, -1, j);
                     t.transform.parent = mapEmptyObject.transform;
-                    t.GetComponent<Renderer>().material.color = Color.red;
+                }
+                else if (map[i, j] == 3)
+                {
+                    var t = Instantiate(cubes[2]);
+                    t.transform.position = new Vector3(i, -1, j);
+                    t.transform.parent = mapEmptyObject.transform;
                 }
                 else
                 {

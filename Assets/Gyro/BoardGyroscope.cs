@@ -7,7 +7,6 @@ public class BoardGyroscope : MonoBehaviour
     private Vector3 firstClick;
     private bool isDragging;
     public float learp;
-    private float timeCount = 0.0f;
     private Quaternion lastBoard;
 
     [SerializeField]
@@ -15,17 +14,17 @@ public class BoardGyroscope : MonoBehaviour
 
     private void MouseDown()
     {
-        firstClick = Input.mousePosition;
-        Debug.Log("mouse down");
+        if (Time.timeScale == 0)
+            return;
+        if (firstClick == new Vector3())
+            firstClick = Input.mousePosition;
         isDragging = true;
     }
 
     private void MouseUp()
     {
         isDragging = false;
-        timeCount = 0;
         lastBoard = board.transform.rotation;
-        Debug.Log("mouse up");
     }
 
     private void Update()
@@ -40,11 +39,6 @@ public class BoardGyroscope : MonoBehaviour
             UpdatePosition();
             return;
         }
-        float progress = timeCount * learp;
-        progress = Mathf.Clamp(progress, 0, 0.99f);
-        Debug.Log(lastBoard);
-        board.transform.rotation = Quaternion.Slerp(lastBoard, new Quaternion(0, 0, 0, 0), progress);
-        timeCount = timeCount + Time.deltaTime;
     }
 
     private void UpdatePosition()
