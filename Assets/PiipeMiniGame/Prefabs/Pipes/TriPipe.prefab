@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1b3fd8fce315c5746b7bd04a0e36d911, type: 3}
+      objectReference: {fileID: 21300000, guid: 97473e2b78296e44082f8201f251dd64, type: 3}
     - target: {fileID: 1274187264805647469, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Name
       value: TriPipe
@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 45c0558e706351b42818d4604b1b8013, type: 3}
+      objectReference: {fileID: 21300000, guid: 5202e085c30b1d04995861bd1e1ae8f0, type: 3}
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Maskable
       value: 1

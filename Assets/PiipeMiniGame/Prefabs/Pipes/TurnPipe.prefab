@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d71cd8c79dcbcf845b6a54e9a4f326d6, type: 3}
+      objectReference: {fileID: 21300000, guid: cb7ead362fb47044b8f230ff26ff5411, type: 3}
     - target: {fileID: 1274187264805647469, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Name
       value: TurnPipe
@@ -34,7 +34,7 @@ PrefabInstance:
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d8de668cc56fc4c4385194bb31961345, type: 3}
+      objectReference: {fileID: 21300000, guid: bfa376c68543b5b44bf9f2c72fa6f9e1, type: 3}
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_FillAmount
       value: 0

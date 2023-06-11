@@ -25,7 +25,7 @@ public class WebSocketClient : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SendMessage("Hello");
+            SendMessage("Aie ca coule !!!!");
         }
     }
 
@@ -39,7 +39,7 @@ public class WebSocketClient : MonoBehaviour
         };
     }
 
-    private void SendMessage(string message)
+    public void SendMessage(string message)
     {
         ws.Send(message + "//" + unrealIp);
     }
