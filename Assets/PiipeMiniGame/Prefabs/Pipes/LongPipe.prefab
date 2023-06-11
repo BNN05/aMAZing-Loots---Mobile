@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: 1119698047325973187, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c42f55c4de5ceb64ead528e7de46cfde, type: 3}
+      objectReference: {fileID: 21300000, guid: 95b2390c61e095540b3c1b67f941789c, type: 3}
     - target: {fileID: 1274187264805647469, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Name
       value: LongPipe
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dfeafe02d3c770448858974027400492, type: 3}
+      objectReference: {fileID: 21300000, guid: ba518acca53ac764faffcd22dce21b3a, type: 3}
     - target: {fileID: 5484557289973303429, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_FillAmount
       value: 1
