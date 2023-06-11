@@ -17,6 +17,9 @@ public class WaterAnimation : MonoBehaviour
     public bool isTube;
     private bool isFilled = false;
 
+    [SerializeField]
+    private float _speed = 2;
+
     private void Start()
     {
         water.fillAmount = 0;
@@ -32,7 +35,7 @@ public class WaterAnimation : MonoBehaviour
     {
         if (waterComing)
         {
-            water.fillAmount += 1 * Time.deltaTime;
+            water.fillAmount += 1 * Time.deltaTime * _speed;
 
             if (water.fillAmount >= 1 && !isFilled)
             {

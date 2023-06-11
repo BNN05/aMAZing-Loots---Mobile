@@ -7,6 +7,9 @@ public class MakeRotate : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 0.1f;
+    [SerializeField]
+    private bool _touchInput = true;
+
 
     private Quaternion _objectiveRot;
     private bool _rotating = false;
@@ -24,13 +27,18 @@ public class MakeRotate : MonoBehaviour
         _objectiveRot = Quaternion.Euler(0, 0, 90);
     }
 
+    public void ForceRotation()
+    {
+        _rotating = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (_blocked)
             return;
 
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && _touchInput)
         {
             Touch touchInfo = Input.GetTouch(0);
             if (touchInfo.phase == TouchPhase.Began)

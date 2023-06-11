@@ -12,6 +12,13 @@ public class GameGrid : MonoBehaviour
     private List<(Pipe, Direction)> _winningWay = new List<(Pipe, Direction)>();
     private int _filledPipes = 0;
 
+    private bool _playing = false;
+    public bool IsPlaying { get { return _playing; } }
+
+
+    private bool _solving = false;
+    public bool IsSolving { get { return _solving; } }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -90,6 +97,7 @@ public class GameGrid : MonoBehaviour
         {
             foreach (var pipe in pipes)
             {
+                _solving = true;
                 pipe.StopAllRotation();
             }
         }
@@ -108,6 +116,7 @@ public class GameGrid : MonoBehaviour
                 {
                     pipe.ResetPathChecked();
                     pipe.ResumeAllRotation();
+                    _solving = false;
                 }
             }
         }
@@ -130,6 +139,12 @@ public class GameGrid : MonoBehaviour
 
         if (_filledPipes == _winningWay.Count - 1)
             StartWaterAnimation(_winningWay[_filledPipes].Item1, Direction.right, Pipe.GetOppositeDirection(_winningWay[_filledPipes].Item2));
+
+        if (_filledPipes == _winningWay.Count)
+        {
+            GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
+            obj.GetComponent<GameHandler>().EndMiniGame();
+        }
         else
         {
             ws.SendMessage("Aie ca coule :o !!!!");

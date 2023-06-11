@@ -33,6 +33,10 @@ public class Pipe : MonoBehaviour
 
     private RectTransform _parentRectTranform;
 
+    private GameGrid _gameGrid;
+
+
+
     public bool PathChecked { get; private set; }
 
 
@@ -56,6 +60,9 @@ public class Pipe : MonoBehaviour
         {
             _connectors[connectedDirection] = true;
         }
+
+
+        _gameGrid = GameObject.FindGameObjectWithTag("Grid").GetComponent<GameGrid>();
     }
 
     // Update is called once per frame
@@ -93,8 +100,7 @@ public class Pipe : MonoBehaviour
     private void OnRotation()
     {
         SetCorrectDirection(90);
-        GameObject grid = GameObject.FindGameObjectWithTag("Grid");
-        grid.GetComponent<GameGrid>().StartSolving();
+        _gameGrid.GetComponent<GameGrid>().StartSolving();
     }
 
     public List<(Pipe, Direction)> ConnectedPipes()

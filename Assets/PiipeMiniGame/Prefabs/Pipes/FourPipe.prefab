@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: water
       value: 
       objectReference: {fileID: 5563469186320550124}
+    - target: {fileID: 1914155350218507281, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _speed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3123095657588149510, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: _baseActiveConnectors.Array.size
       value: 4
@@ -129,6 +133,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5534321297007871760, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641321466566082448, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
+      propertyPath: _rotateBack
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8964258901390557834, guid: a6f1de15266d60d4381dc09231a792f7, type: 3}
