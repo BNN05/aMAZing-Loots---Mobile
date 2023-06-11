@@ -43,7 +43,10 @@ public class BlocHandler : MonoBehaviour
                 RaycastHit2D hitInfo = Physics2D.Raycast(touchPosWorld2D, Camera.main.transform.forward);
 
                 if (hitInfo.collider != null && hitInfo.collider.gameObject == this.gameObject)
-                    _mapManager.LoadMiniGame(Bloc.PositionBloc);
+                {
+                    //Faire tourner si énergie
+                    //_mapManager.LoadMiniGame();
+                }
             }
         }
     }

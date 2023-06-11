@@ -141,7 +141,10 @@ public class GameGrid : MonoBehaviour
             StartWaterAnimation(_winningWay[_filledPipes].Item1, Direction.right, Pipe.GetOppositeDirection(_winningWay[_filledPipes].Item2));
 
         if (_filledPipes == _winningWay.Count)
-            GameObject.FindGameObjectWithTag("MiniGameManager").GetComponent<MiniGameManager>().MiniGameEnd(true);
+        {
+            GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
+            obj.GetComponent<GameHandler>().EndMiniGame();
+        }
 
     }
 }

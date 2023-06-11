@@ -15,7 +15,7 @@ public class MapManager : MonoBehaviour
     public GameObject Grid;
 
     [SerializeField]
-    public Canvas Canvas;
+    public Transform Canvas;
 
     public GameObject CameraMap;
 
@@ -44,6 +44,9 @@ public class MapManager : MonoBehaviour
 
     private BlocHandler _blocToRotate;
 
+    [SerializeField]
+    private EnergyManager _energyPlayer;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -64,22 +67,26 @@ public class MapManager : MonoBehaviour
         Grid.GetComponent<RectTransform>().sizeDelta = new Vector2(layoutGrid.cellSize.x * _map.MapSize.x, layoutGrid.cellSize.y * _map.MapSize.y);
     }
 
-    public void LoadMiniGame(Position bloc)
+    public void CheckEnergy(Position bloc)
     {
         _blocToRotate = SortedListBloc[bloc.x][bloc.y].GetComponent<BlocHandler>();
+    }
+
+    public void PlayMiniGame()
+    {
         Canvas.gameObject.SetActive(false);
         CameraMap.SetActive(false);
         _gameManager.PlayMiniGame();
-        _gameManager.MiniGameList.Where(m => m.Playing).FirstOrDefault().ListToMiniGameEnd(MiniGameEnd);
+        _gameManager.MiniGameList.Where(m => m.Playing).FirstOrDefault().ListenToMiniGameEnd(MiniGameEnd);
     }
 
-    async public void MiniGameEnd(bool win)
+    public void MiniGameEnd(bool win)
     {
         if (win)
         {
             CameraMap.SetActive(true);
             Canvas.gameObject.SetActive(true);
-            await Task.Delay(1000);
+            _energyPlayer.ModifyEnergy(1);
         }
     }
     private void ErrorHandler()
