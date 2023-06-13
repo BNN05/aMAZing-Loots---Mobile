@@ -36,12 +36,13 @@ public class Wire : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(rayOrigin, rayDirection, out hit))
         {
-            if (hit.transform.gameObject.GetComponent<WireEnd>())
+            if (hit.transform.gameObject.GetComponent<Wire>())
             {
                 line.SetPosition(0, hit.transform.position);
                 transform.gameObject.GetComponent<Collider>().enabled = false;
                 if (hit.transform.tag == destinationTag)
                 {
+                    hit.transform.gameObject.GetComponent<Wire>().completed = true;
                     completed = true;
                     WireManager.instance.CheckIfAllCompleted();
                 }
