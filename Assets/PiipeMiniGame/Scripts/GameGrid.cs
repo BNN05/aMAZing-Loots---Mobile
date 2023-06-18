@@ -145,7 +145,7 @@ public class GameGrid : MonoBehaviour
             GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
             obj.GetComponent<GameHandler>().EndMiniGame();
         }
-        else
+        else if (ws != null)
         {
             ws.SendMessage("Aie ca coule :o !!!!");
         }
