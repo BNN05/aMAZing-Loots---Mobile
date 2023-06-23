@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/MainMenu/MainMenu.unity
     guid: f2cc3cac3c40cd942a356f01d232ab73
@@ -17,5 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PipeScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Scenes/WireGame/WireGame 1.unity
+    guid: f214eb14d20bec2468acca819370f4fd
+  - enabled: 1
+    path: Assets/Scenes/WireGame/WireGame 2.unity
+    guid: d6dfbc9ee2648bc40872a0c9e5cf0b7a
+  - enabled: 1
+    path: Assets/Scenes/WireGame/WireGame 3.unity
+    guid: 04aca1facc4d13f44a90f120756c8bd7
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: cf83b46593860f44b865e7cf74147b93, type: 2}

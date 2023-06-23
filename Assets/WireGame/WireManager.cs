@@ -42,6 +42,8 @@ public class WireManager : MonoBehaviour
 
     private void Win()
     {
+        GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
+        obj.GetComponent<GameHandler>().EndMiniGame();
         WinUI.gameObject.SetActive(true);
     }
 

@@ -38,9 +38,9 @@ public class MiniGame : ScriptableObject
 
     public void MiniGameEnd(bool win)
     {
+        SceneManager.UnloadSceneAsync(scene);
         OnMiniGameEnd.Invoke(win);
         Playing = false;
-        SceneManager.UnloadSceneAsync(scene);
         OnMiniGameEnd.RemoveAllListeners();
     }
 
