@@ -13,27 +13,68 @@ public class Wire : MonoBehaviour
     private bool completed;
     public bool IsCompleted => completed;
 
+    private bool _isClicked;
+    private bool _wasClicked;
+    public bool _isSelected;
+
     private void Start()
     {
         line = GetComponent<LineRenderer>();
     }
 
-    private void OnMouseDown()
+    private void Update()
+    {
+        _wasClicked = _isClicked;
+        _isClicked = false;
+        if(Input.touchCount == 1)
+        {
+            _isClicked = true;
+            Vector3 rayOrigin = Camera.main.transform.position;
+            Vector3 rayDirection = MouseWorldPosition() - Camera.main.transform.position;
+            RaycastHit hit;
+            if (Physics.Raycast(rayOrigin, rayDirection, out hit))
+            {
+                if (hit.transform.gameObject.GetComponent<Wire>() )
+                {
+                    
+                    if (!_wasClicked)
+                    {
+                        OnMouseDown();
+                        hit.transform.gameObject.GetComponent<Wire>()._isSelected = true;
+                    }
+                    else if(_isSelected)
+                    {
+                        OnMouseDrag();
+                    }
+                }
+            }
+            
+        }
+        else
+        {
+            if (_wasClicked && _isSelected)
+                OnMouseUp();
+        }
+    }
+    
+
+    public void OnMouseDown()
     {
         offset = transform.position - MouseWorldPosition();
     }
 
-    private void OnMouseDrag()
+    public void OnMouseDrag()
     {
         line.SetPosition(0, MouseWorldPosition() + offset);
         line.SetPosition(1, transform.position);
     }
 
-    private void OnMouseUp()
+    public void OnMouseUp()
     {
         Vector3 rayOrigin = Camera.main.transform.position;
         Vector3 rayDirection = MouseWorldPosition() - Camera.main.transform.position;
         RaycastHit hit;
+        WireManager.instance.UnselectAll();
         if (Physics.Raycast(rayOrigin, rayDirection, out hit))
         {
             if (hit.transform.gameObject.GetComponent<Wire>())
@@ -60,7 +101,15 @@ public class Wire : MonoBehaviour
 
     private Vector3 MouseWorldPosition()
     {
-        Vector3 mouseScreenPos = Input.mousePosition;
+        Vector3 mouseScreenPos;
+        if (Input.touchCount ==1)
+        {
+             mouseScreenPos = Input.touches[0].position;
+        }
+        else
+        {
+            mouseScreenPos = Input.mousePosition;
+        }
         mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
         return Camera.main.ScreenToWorldPoint(mouseScreenPos);
     }

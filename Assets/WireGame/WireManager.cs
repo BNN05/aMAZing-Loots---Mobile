@@ -20,6 +20,14 @@ public class WireManager : MonoBehaviour
             instance = this;
     }
 
+    public void UnselectAll()
+    {
+        foreach (var item in wire)
+        {
+            item._isSelected = false;
+        }
+    }
+
     public void CheckIfAllCompleted()
     {
         int compltednb = 0;
