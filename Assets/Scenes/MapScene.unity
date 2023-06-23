@@ -304,13 +304,15 @@ MonoBehaviour:
   BlocsVisual:
     _serializedList:
     - Key: 0
-      Value: {fileID: 21300000, guid: e1768f02aab122b40986801fb839b7d2, type: 3}
+      Value: {fileID: 21300000, guid: bac69428c3d020e4cac9ee59576608a1, type: 3}
     - Key: 1
-      Value: {fileID: 21300000, guid: c42f55c4de5ceb64ead528e7de46cfde, type: 3}
+      Value: {fileID: 21300000, guid: 74ddb211601b36848b8766682505b525, type: 3}
     - Key: 2
-      Value: {fileID: 21300000, guid: 00d3f02c60ad4624ca1f297535a4c892, type: 3}
+      Value: {fileID: 21300000, guid: 6eb7397a7f3e6d346a39602f228a9ebc, type: 3}
     - Key: 3
-      Value: {fileID: 21300000, guid: 1b3fd8fce315c5746b7bd04a0e36d911, type: 3}
+      Value: {fileID: 21300000, guid: dad29a2f7c9363d4c9459c3380bd7455, type: 3}
+    - Key: 4
+      Value: {fileID: 21300000, guid: 2da71a96c05143849aef286f99c9a179, type: 3}
   RotationBlocs:
     _serializedList:
     - Key: 0
@@ -1701,7 +1703,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.4691944
+  orthographic size: 7.8710647
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
