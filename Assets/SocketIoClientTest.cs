@@ -21,28 +21,52 @@ public class SocketIoClientTest : MonoBehaviour
 
         Instance = this;
     }
-    void Start()
-    {
-        ConnectToServer();
-    }
-    private void ParseCode(string code)
-    {
-        code = code.Remove(0, "{\"roomId\":\"".Count());
-        RoomId = code.Remove(7);
-    }
-    private async void ConnectToServer()
+    public async void ConnectToServer()
     {
         var client = new SocketIO(host);
 
-        client.On("message", response => {
-            if (response.ToString().Contains("roomId"))
-            {
-                ParseCode(response.GetValue<string>());
-            }
+        client.On("map-data", response =>
+        {
+            ManageMapData(response.GetValue<string>());
         });
-        await client.ConnectAsync();
 
+        client.On("rotate-module", response =>
+        {
+            RotateModule(response.GetValue<string>());
+        });
+
+        client.On("lever-activate", response =>
+        {
+            LeverActivate(response.GetValue<string>());
+        });
+
+        client.On("game-over", response =>
+        {
+            GameOver(response.GetValue<string>());
+        });
+
+        await client.ConnectAsync();   
+    }
+
+    private void ManageMapData(string mapJson)
+    {
         
+    }
+
+    private void RotateModule(string module)
+    {
+
+    }
+    private void LeverActivate(string lever)
+    {
+
+    }
+    private void GameOver(string gameOver)
+    {
+        if(gameOver == "true")
+        {
+
+        }
     }
 
 }
