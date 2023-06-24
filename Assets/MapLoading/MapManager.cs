@@ -163,7 +163,7 @@ public class MapManager : MonoBehaviour
 
     public void SendMalus()
     {
-
+        SocketIoClientTest.Instance.SendMalus();
     }
 
     public void SendRotation(int direction)
