@@ -166,7 +166,7 @@ public class MapManager : MonoBehaviour
 
     }
 
-    public void SendRotation()
+    public void SendRotation(int direction)
     {
 
     }
