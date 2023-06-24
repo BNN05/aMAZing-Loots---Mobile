@@ -1,0 +1,21 @@
+Event	ID	Name			Wwise Object Path	Notes
+	174960569	Loose			\Default Work Unit\Loose	
+	791296112	BonneCarte			\Default Work Unit\BonneCarte	
+	979765101	Win			\Default Work Unit\Win	
+	1125809279	MauvaiseCarte			\Default Work Unit\MauvaiseCarte	
+	1584507803	Click			\Default Work Unit\Click	
+	4129067738	RotateTube			\Default Work Unit\RotateTube	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	20159747	EchecMiniGame	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Malus_F840B484.wem		\Actor-Mixer Hierarchy\Default Work Unit\EchecMiniGame		186108
+	33068044	MauvaiseCarte	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Autres-son_C444AEE4.wem		\Actor-Mixer Hierarchy\Default Work Unit\MauvaiseCarte		128004
+	59369127	RotationTube	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Autres-son_38931582.wem		\Actor-Mixer Hierarchy\Default Work Unit\RotationTube		74244
+	287975271	jeu-réussi-_a-6scd_	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\jeu-réussi-_a-6scd__C3C26778.wem		\Actor-Mixer Hierarchy\Default Work Unit\jeu-réussi-_a-6scd_		205208
+	322847000	Porte	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Porte_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Porte		344600
+	529232286	Clique	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Clique_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Clique		9718368
+	601404145	Ambiance	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Ambiance_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambiance		4242212
+	882081064	Activation Bonus	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Activation Bonus_B56A7B7E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Activation Bonus		214536
+	928626716	Mouvement modules	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Mouvement modules_25B74572.wem		\Actor-Mixer Hierarchy\Default Work Unit\Mouvement modules		511728
+	980927015	BonneCarte	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Autres-son_7239994C.wem		\Actor-Mixer Hierarchy\Default Work Unit\BonneCarte		113924
+	1001446167	CliqueMenu	C:\Users\bn\Documents\DEV\cnam\aMAZing-Loots---Mobile\aMAZing-Loots---Mobile_WwiseProject\.cache\Windows\SFX\SON\Autres-son_F045861D.wem		\Actor-Mixer Hierarchy\Default Work Unit\CliqueMenu		84576
+

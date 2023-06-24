@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A3989629-A455-4E20-B138-CC626214F6CE}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{A3989629-A455-4E20-B138-CC626214F6CE}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="ModuleRotate" ID="{31EEDAC4-F25E-4ACD-B95D-6A9C64B5A915}"/>
+				<Event Name="Click" ID="{1473D818-690C-4BB5-A9B7-38117F90762B}">
+					<ChildrenList>
+						<Action Name="" ID="{DC1F4C5B-1D8E-4AED-9F0B-07F9D94F5DB4}" ShortID="800215314">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CliqueMenu" ID="{08B5D07A-B87D-4BE7-B1BD-8AC872A9EF93}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Win" ID="{7480193B-8381-4641-B6E3-ABE0FF602761}">
+					<ChildrenList>
+						<Action Name="" ID="{30C0F404-C278-403D-9934-536A859CDDA6}" ShortID="1005694905">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="jeu-réussi-_a-6scd_" ID="{B061058A-740F-4277-B601-AC346072BE1C}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Loose" ID="{4D4AF535-D937-4DDE-8769-755D0F59CB34}">
+					<ChildrenList>
+						<Action Name="" ID="{DE920AA6-4FD3-4F9A-BF55-2BB81D4D4275}" ShortID="885512345">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EchecMiniGame" ID="{9325A510-787C-42AB-86AE-788F0418AFCD}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RotateTube" ID="{08B6FE53-60FE-424B-966C-BC1AE33BD754}">
+					<ChildrenList>
+						<Action Name="" ID="{3DE54877-DCE8-4E97-AA68-C5336C6ACD1B}" ShortID="342469698">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RotationTube" ID="{5557A078-B803-4576-918C-F35C634A365C}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MauvaiseCarte" ID="{FE3098D8-6149-4349-863F-BAB41E58EAF5}">
+					<ChildrenList>
+						<Action Name="" ID="{0D3FEA2B-0803-4EF0-84E7-F66F3BDED4A8}" ShortID="403774675">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MauvaiseCarte" ID="{10C4B3B4-464A-49CC-B4DC-A0EB1D8A4436}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BonneCarte" ID="{2862C311-466E-4353-99B5-6495E032B817}">
+					<ChildrenList>
+						<Action Name="" ID="{87AB983C-4EE7-4066-A815-DDA494DC71DB}" ShortID="440424236">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BonneCarte" ID="{4EED8B35-F482-414A-AF05-C27997396D8F}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

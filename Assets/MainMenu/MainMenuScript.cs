@@ -30,6 +30,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void ConnectButton()
     {
+        SoundManager.Instance.PlayClickSound();
         MainMenu.SetActive(false);
         ConnectMenu.SetActive(true);
         OpenGameObject = ConnectMenu;
@@ -38,11 +39,13 @@ public class MainMenuScript : MonoBehaviour
 
     public void QuitButton()
     {
+        SoundManager.Instance.PlayClickSound();
         Application.Quit();
     }
 
     public void HowToPlayButton()
     {
+        SoundManager.Instance.PlayClickSound();
         MainMenu.SetActive(false);
         HowToPlayMenu.SetActive(true);
         OpenGameObject = HowToPlayMenu;
@@ -50,12 +53,14 @@ public class MainMenuScript : MonoBehaviour
 
     public void BackToMainMenuButton()
     {
+        SoundManager.Instance.PlayClickSound();
         OpenGameObject.SetActive(false);
         MainMenu.SetActive(true);
     }
 
     public void ConnectWithIPButton()
     {
+        SoundManager.Instance.PlayClickSound();
         string ip = IpText.text;
         SceneManager.LoadScene(SceneToLoadOnConnect, LoadSceneMode.Single);
     }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9852CF06-5D3A-434B-BDA9-876FC1223C42}" SchemaVersion="110">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{9852CF06-5D3A-434B-BDA9-876FC1223C42}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="New_SoundBank" ID="{4D3B15F1-79D2-40AD-AB99-1B0B0FB15353}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Ambiance" ID="{72EF9FDE-28B2-402D-A32F-387713B262BC}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BonneCarte" ID="{4EED8B35-F482-414A-AF05-C27997396D8F}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="jeu-réussi-_a-6scd_" ID="{B061058A-740F-4277-B601-AC346072BE1C}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="EchecMiniGame" ID="{9325A510-787C-42AB-86AE-788F0418AFCD}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Mouvement modules" ID="{1585217C-7C54-4411-837C-A2BC4A862C72}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Porte" ID="{2ECB77C0-DD72-4506-8BF5-554B4EDA21BA}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="RotationTube" ID="{5557A078-B803-4576-918C-F35C634A365C}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MauvaiseCarte" ID="{10C4B3B4-464A-49CC-B4DC-A0EB1D8A4436}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Clique" ID="{AE7D8D28-B2E1-4A4F-98AD-AEEF99169656}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="CliqueMenu" ID="{08B5D07A-B87D-4BE7-B1BD-8AC872A9EF93}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Activation Bonus" ID="{2F42819A-C2F4-4DB6-A72B-09944231EAAC}" WorkUnitID="{EB0E985B-CABB-4917-8E3C-67A8CA942ECE}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
