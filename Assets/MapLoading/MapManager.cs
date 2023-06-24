@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,15 +51,20 @@ public class MapManager : MonoBehaviour
 
     private SocketIoClientTest socketIOClient;
 
+    public TMP_Text textLever;
+    public int leverDown = 0;
+
+    public BlocHandler blockSelected;
+
     // Start is called before the first frame update
     private void Start()
     {
         //Load Json
         //var goSocket = GameObject.FindGameObjectWithTag("SocketIO");
         //socketIOClient = goSocket.GetComponent<SocketIoClientTest>();
-        socketIOClient.OnGameOver.AddListener(OnGameOver);
-        socketIOClient.OnLever.AddListener(OnLeverDown);
-        socketIOClient.OnRotation.AddListener(OnRotationComputer);
+        //socketIOClient.OnGameOver.AddListener(OnGameOver);
+        //socketIOClient.OnLever.AddListener(OnLeverDown);
+        //socketIOClient.OnRotation.AddListener(OnRotationComputer);
 
 
         List<Piece> test = JsonConvert.DeserializeObject<List<Piece>>(MapJson.text);
@@ -72,10 +78,15 @@ public class MapManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        InitMapLayout();
+    }
     private void InitMapLayout()
     {
         GridLayoutGroup layoutGrid = Grid.GetComponent<GridLayoutGroup>();
-        Grid.GetComponent<RectTransform>().sizeDelta = new Vector2(layoutGrid.cellSize.x * 5, layoutGrid.cellSize.y * 5);
+        RectTransform rectTransform = Grid.transform.parent.GetComponent<RectTransform>();
+        layoutGrid.cellSize = new Vector2(Mathf.FloorToInt(rectTransform.rect.width / 6), Mathf.FloorToInt(rectTransform.rect.width / 6));
     }
 
     public void CheckEnergy(Position bloc)
@@ -122,6 +133,7 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < (5 * 5); i++)
         {
             GameObject bloc = Instantiate(BlocGrid);
+            bloc.GetComponent<RectTransform>().localPosition = Vector3.zero;
             bloc.transform.parent = Grid.transform;
             bloc.transform.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
@@ -134,9 +146,9 @@ public class MapManager : MonoBehaviour
     {
         foreach (Piece bloc in _map.pieces)
         {
-            SortedListBloc[bloc.x][bloc.y].GetComponentInChildren<SpriteRenderer>().sprite = BlocsVisual[(TypeBloc)bloc.piece];
+            SortedListBloc[bloc.x][bloc.y].GetComponentInChildren<Image>().sprite = BlocsVisual[(TypeBloc)bloc.piece];
             SortedListBloc[bloc.x][bloc.y].GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, bloc.rotation);
-            SortedListBloc[bloc.x][bloc.y].AddComponent<BlocHandler>().Init(bloc, this);
+            SortedListBloc[bloc.x][bloc.y].GetComponent<BlocHandler>().Init(bloc, this);
 
             //Force set collider size
             SortedListBloc[bloc.x][bloc.y].GetComponent<ResizeColliderRectTransform>().SetSizeTogo(SortedListBloc[bloc.x][bloc.y].GetComponent<RectTransform>());
@@ -166,6 +178,16 @@ public class MapManager : MonoBehaviour
 
     private void OnGameOver(string winComputer)
     {
+
+    }
+
+    public void OnBlockSelected(BlocHandler block)
+    {
+        if (blockSelected != null)
+            blockSelected.SetSelected(false);
+
+        blockSelected = block;
+        blockSelected.SetSelected(true);
 
     }
 }
