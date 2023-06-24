@@ -17,6 +17,8 @@ public class SocketIoClientTest : MonoBehaviour
     [SerializeField]
     private string RoomId;
 
+    SocketIO client;
+
     [SerializeField]
     public string MapJson { get; private set; }
 
@@ -35,7 +37,7 @@ public class SocketIoClientTest : MonoBehaviour
     }
     public async void ConnectToServer()
     {
-        var client = new SocketIO(host);
+        client = new SocketIO(host);
 
         client.On("map-data", response =>
         {
@@ -58,6 +60,16 @@ public class SocketIoClientTest : MonoBehaviour
         });
 
         await client.ConnectAsync();   
+    }
+
+    private void SendMalus()
+    {
+        client.EmitAsync("Malus");
+    }
+
+    public void SendRotate(string rotation)
+    {
+        client.EmitAsync("Rotate-Module", rotation);
     }
 
     private void ManageMapData(string mapJson)
