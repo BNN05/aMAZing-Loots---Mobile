@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F56A610C-C7C4-F874-B68B-7ADDF94EBB7A}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="4072029455" Type="User" Language="SFX" Hash="{78EF18EA-690A-4194-C40A-65E9EB884826}">
+			<ShortName>New_SoundBank</ShortName>
+			<Path>New_SoundBank.bnk</Path>
+			<Media>
+				<File Id="20159747" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Malus.wav</ShortName>
+					<CachePath>SFX/SON/Malus_F840B484.wem</CachePath>
+				</File>
+				<File Id="33068044" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Autres-son.wav</ShortName>
+					<CachePath>SFX/SON/Autres-son_C444AEE4.wem</CachePath>
+				</File>
+				<File Id="59369127" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Autres-son.wav</ShortName>
+					<CachePath>SFX/SON/Autres-son_38931582.wem</CachePath>
+				</File>
+				<File Id="287975271" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\jeu-réussi-_a-6scd_.wav</ShortName>
+					<CachePath>SFX/SON/jeu-réussi-_a-6scd__C3C26778.wem</CachePath>
+				</File>
+				<File Id="322847000" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Porte.wav</ShortName>
+					<CachePath>SFX/SON/Porte_10C4C929.wem</CachePath>
+				</File>
+				<File Id="529232286" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Clique.wav</ShortName>
+					<CachePath>SFX/SON/Clique_10C4C929.wem</CachePath>
+				</File>
+				<File Id="601404145" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Ambiance.wav</ShortName>
+					<CachePath>SFX/SON/Ambiance_10C4C929.wem</CachePath>
+				</File>
+				<File Id="882081064" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Activation Bonus.wav</ShortName>
+					<CachePath>SFX/SON/Activation Bonus_B56A7B7E.wem</CachePath>
+				</File>
+				<File Id="928626716" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Mouvement modules.wav</ShortName>
+					<CachePath>SFX/SON/Mouvement modules_25B74572.wem</CachePath>
+				</File>
+				<File Id="980927015" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Autres-son.wav</ShortName>
+					<CachePath>SFX/SON/Autres-son_7239994C.wem</CachePath>
+				</File>
+				<File Id="1001446167" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SON\Autres-son.wav</ShortName>
+					<CachePath>SFX/SON/Autres-son_F045861D.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="791296112" Name="BonneCarte" DurationType="OneShot" DurationMin="0.64529014" DurationMax="0.64529014">
+					<MediaRefs>
+						<MediaRef Id="980927015"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1584507803" Name="Click" DurationType="OneShot" DurationMin="0.47891158" DurationMax="0.47891158">
+					<MediaRefs>
+						<MediaRef Id="1001446167"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="174960569" Name="Loose" DurationType="OneShot" DurationMin="0.96882766" DurationMax="0.96882766">
+					<MediaRefs>
+						<MediaRef Id="20159747"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1125809279" Name="MauvaiseCarte" DurationType="OneShot" DurationMin="0.7250998" DurationMax="0.7250998">
+					<MediaRefs>
+						<MediaRef Id="33068044"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4129067738" Name="RotateTube" DurationType="OneShot" DurationMin="0.4203379" DurationMax="0.4203379">
+					<MediaRefs>
+						<MediaRef Id="59369127"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="979765101" Name="Win" DurationType="OneShot" DurationMin="1.1627774" DurationMax="1.1627774">
+					<MediaRefs>
+						<MediaRef Id="287975271"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{75A6D7A7-E386-F0B8-FBAE-24DA249498B5}</FileHash>
+</SoundBanksInfo>

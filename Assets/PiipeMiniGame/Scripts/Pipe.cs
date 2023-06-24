@@ -99,6 +99,7 @@ public class Pipe : MonoBehaviour
 
     private void OnRotation()
     {
+        SoundManager.Instance.PlayRotateSound();
         SetCorrectDirection(90);
         _gameGrid.GetComponent<GameGrid>().StartSolving();
     }
