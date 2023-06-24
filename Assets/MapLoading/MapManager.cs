@@ -1,4 +1,5 @@
 using AYellowpaper.SerializedCollections;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,18 +41,28 @@ public class MapManager : MonoBehaviour
 
     public bool IsRotating { get { return _rotation; } }
 
-    private Map _map;
+    private Map _map = new Map();
 
     private BlocHandler _blocToRotate;
 
     [SerializeField]
     private EnergyManager _energyPlayer;
 
+    private SocketIoClientTest socketIOClient;
+
     // Start is called before the first frame update
     private void Start()
     {
         //Load Json
-        _map = JsonUtility.FromJson<Map>(MapJson.text);
+        //var goSocket = GameObject.FindGameObjectWithTag("SocketIO");
+        //socketIOClient = goSocket.GetComponent<SocketIoClientTest>();
+        socketIOClient.OnGameOver.AddListener(OnGameOver);
+        socketIOClient.OnLever.AddListener(OnLeverDown);
+        socketIOClient.OnRotation.AddListener(OnRotationComputer);
+
+
+        List<Piece> test = JsonConvert.DeserializeObject<List<Piece>>(MapJson.text);
+        _map.pieces = test;
 
         ErrorHandler();
 
@@ -64,7 +75,7 @@ public class MapManager : MonoBehaviour
     private void InitMapLayout()
     {
         GridLayoutGroup layoutGrid = Grid.GetComponent<GridLayoutGroup>();
-        Grid.GetComponent<RectTransform>().sizeDelta = new Vector2(layoutGrid.cellSize.x * _map.MapSize.x, layoutGrid.cellSize.y * _map.MapSize.y);
+        Grid.GetComponent<RectTransform>().sizeDelta = new Vector2(layoutGrid.cellSize.x * 5, layoutGrid.cellSize.y * 5);
     }
 
     public void CheckEnergy(Position bloc)
@@ -94,45 +105,67 @@ public class MapManager : MonoBehaviour
         if (_map == null)
             Debug.LogError("No map loaded");
 
-        else if (_map.Blocs == null || _map.Blocs.Length <= 0)
+        else if (_map.pieces == null || _map.pieces.Count <= 0)
             Debug.LogError("No block data found");
-
-        else if (_map.MapSize == null || _map.MapSize.x <= 0 || _map.MapSize.y <= 0)
-            Debug.LogError("No map size data found");
 
         return;
     }
 
     private void CreateAndSortBlocInArray()
     {
-        SortedListBloc = new List<List<GameObject>>(_map.MapSize.x);
-        for (int i = 0; i < _map.MapSize.x; i++)
+        SortedListBloc = new List<List<GameObject>>(5);
+        for (int i = 0; i < 5; i++)
         {
-            SortedListBloc.Add(new List<GameObject>(_map.MapSize.y));
+            SortedListBloc.Add(new List<GameObject>(5));
         }
 
-        for (int i = 0; i < (_map.MapSize.x * _map.MapSize.y); i++)
+        for (int i = 0; i < (5 * 5); i++)
         {
             GameObject bloc = Instantiate(BlocGrid);
             bloc.transform.parent = Grid.transform;
             bloc.transform.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
-            int x = (i) % _map.MapSize.x;
+            int x = (i) % 5;
             SortedListBloc[x].Add(bloc);
         }
     }
 
     private void SetMapVisualToJsonValues()
     {
-        foreach (Bloc bloc in _map.Blocs)
+        foreach (Piece bloc in _map.pieces)
         {
-            SortedListBloc[bloc.PositionBloc.x][bloc.PositionBloc.y].GetComponentInChildren<SpriteRenderer>().sprite = BlocsVisual[(TypeBloc)bloc.TypeBloc];
-            SortedListBloc[bloc.PositionBloc.x][bloc.PositionBloc.y].GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, RotationBlocs[(RotationBloc)bloc.RotationBloc]);
-            SortedListBloc[bloc.PositionBloc.x][bloc.PositionBloc.y].AddComponent<BlocHandler>().Init(bloc, this);
+            SortedListBloc[bloc.x][bloc.y].GetComponentInChildren<SpriteRenderer>().sprite = BlocsVisual[(TypeBloc)bloc.piece];
+            SortedListBloc[bloc.x][bloc.y].GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, bloc.rotation);
+            SortedListBloc[bloc.x][bloc.y].AddComponent<BlocHandler>().Init(bloc, this);
 
             //Force set collider size
-            SortedListBloc[bloc.PositionBloc.x][bloc.PositionBloc.y].GetComponent<ResizeColliderRectTransform>().SetSizeTogo(SortedListBloc[bloc.PositionBloc.x][bloc.PositionBloc.y].GetComponent<RectTransform>());
-            SortedListBloc[bloc.PositionBloc.x][bloc.PositionBloc.y].GetComponent<ResizeColliderRectTransform>().Resize();
+            SortedListBloc[bloc.x][bloc.y].GetComponent<ResizeColliderRectTransform>().SetSizeTogo(SortedListBloc[bloc.x][bloc.y].GetComponent<RectTransform>());
+            SortedListBloc[bloc.x][bloc.y].GetComponent<ResizeColliderRectTransform>().Resize();
         }
+    }
+
+    private void OnLeverDown(string leverDown)
+    {
+
+    }
+
+    public void SendMalus()
+    {
+
+    }
+
+    public void SendRotation()
+    {
+
+    }
+
+    private void OnRotationComputer(string rotation)
+    {
+
+    }
+
+    private void OnGameOver(string winComputer)
+    {
+
     }
 }

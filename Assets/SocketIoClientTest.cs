@@ -5,6 +5,9 @@ using UnityEngine;
 using System.Linq;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using System.IO;
+using UnityEditor;
+using UnityEngine.Events;
 
 public class SocketIoClientTest : MonoBehaviour
 {
@@ -13,12 +16,21 @@ public class SocketIoClientTest : MonoBehaviour
     private string host;
     [SerializeField]
     private string RoomId;
+
+    [SerializeField]
+    public string MapJson { get; private set; }
+
+    public UnityEvent<string> OnRotation = new UnityEvent<string>();
+    public UnityEvent<string> OnLever = new UnityEvent<string>();
+    public UnityEvent<string> OnGameOver = new UnityEvent<string>();
+
     // Start is called before the first frame update
     private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
+
         if (Instance != null)
             return;
-
         Instance = this;
     }
     public async void ConnectToServer()
@@ -50,23 +62,20 @@ public class SocketIoClientTest : MonoBehaviour
 
     private void ManageMapData(string mapJson)
     {
-        
+        MapJson = mapJson;
     }
 
     private void RotateModule(string module)
     {
-
+        OnRotation.Invoke(module);
     }
     private void LeverActivate(string lever)
     {
-
+        OnLever.Invoke(lever);
     }
     private void GameOver(string gameOver)
     {
-        if(gameOver == "true")
-        {
-
-        }
+        OnGameOver.Invoke(gameOver);
     }
 
 }

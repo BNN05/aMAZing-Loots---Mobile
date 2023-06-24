@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlocHandler : MonoBehaviour
 {
-    public Bloc Bloc { get; private set; }
+    public Piece Bloc { get; private set; }
     private MapManager _mapManager;
     // Start is called before the first frame update
     void Start()
@@ -12,7 +12,7 @@ public class BlocHandler : MonoBehaviour
         
     }
 
-    public void Init(Bloc bloc, MapManager mapManager)
+    public void Init(Piece bloc, MapManager mapManager)
     {
         Bloc = bloc;
         _mapManager = mapManager;

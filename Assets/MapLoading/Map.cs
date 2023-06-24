@@ -34,10 +34,17 @@ public class Bloc
     public RotationBloc RotationBloc;
 }
 
+public class Piece
+{
+    public int x;
+    public int y;
+    public int rotation;
+    public int piece;
+}
+
 
 [Serializable]
 public class Map
 {
-    public MapSize MapSize;
-    public Bloc[] Blocs;
+    public List<Piece> pieces;
 }

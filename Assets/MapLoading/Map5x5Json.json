@@ -41,7 +41,7 @@
         "x": "0",
         "y": "1"
       },
-      "TypeBloc": "0",
+      "TypeBloc": "3",
       "RotationBloc": "0"
     },
     {
@@ -49,7 +49,7 @@
         "x": "1",
         "y": "1"
       },
-      "TypeBloc": "1",
+      "TypeBloc": "3",
       "RotationBloc": "0"
     },
     {
@@ -57,7 +57,7 @@
         "x": "2",
         "y": "1"
       },
-      "TypeBloc": "2",
+      "TypeBloc": "3",
       "RotationBloc": "0"
     },
     {

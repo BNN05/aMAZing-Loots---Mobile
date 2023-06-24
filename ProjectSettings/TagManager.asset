@@ -9,6 +9,8 @@ TagManager:
   - WP2
   - WP3
   - WP4
+  - MiniGameManager
+  - SocketIO
   layers:
   - Default
   - TransparentFX
