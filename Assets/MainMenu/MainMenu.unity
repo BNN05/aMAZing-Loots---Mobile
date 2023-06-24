@@ -904,7 +904,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 300, y: 65}
+  m_Size: {x: 190, y: 65}
   m_EdgeRadius: 0
 --- !u!114 &318653077
 MonoBehaviour:
@@ -1468,7 +1468,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.4691944
+  orthographic size: 7.875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1825,7 +1825,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 300, y: 65}
+  m_Size: {x: 190, y: 57.4}
   m_EdgeRadius: 0
 --- !u!114 &774291772
 MonoBehaviour:
