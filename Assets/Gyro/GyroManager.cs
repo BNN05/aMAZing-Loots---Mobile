@@ -15,11 +15,16 @@ public class GyroManager : MonoBehaviour
 
     public void GameOver()
     {
+        GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
+        obj.GetComponent<GameHandler>().EndMiniGame(false);
+        //"FINITO"
         Debug.Log("Finito");
     }
 
     public void Win()
     {
+        GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
+        obj.GetComponent<GameHandler>().EndMiniGame(true);
         Debug.Log("Win");
     }
 

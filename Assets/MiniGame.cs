@@ -11,9 +11,11 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "MiniGame", order = 0, fileName = "New MiniGame")]
 public class MiniGame : ScriptableObject
 {
-    public string scene;
-    private UnityEvent<bool> OnMiniGameEnd = new UnityEvent<bool>();
+    public string[] scene;
+    public string sceneActive;
+    private UnityEvent<bool, int> OnMiniGameEnd = new UnityEvent<bool, int>();
     private CancellationTokenSource cts;
+    public int EarnMiniGame = 1;
 
     public bool Playing { get; private set; }
 
@@ -23,7 +25,7 @@ public class MiniGame : ScriptableObject
         if (token.IsCancellationRequested)
             return;
         
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         while (asyncOperation.progress < 0.9f)
         {
@@ -36,24 +38,25 @@ public class MiniGame : ScriptableObject
         cts.Cancel();
     }
 
-    public void MiniGameEnd(bool win)
+    public void MiniGameEnd(bool win, int energyWin)
     {
-        SceneManager.UnloadSceneAsync(scene);
-        OnMiniGameEnd.Invoke(win);
+        SceneManager.UnloadSceneAsync(sceneActive);
+        OnMiniGameEnd.Invoke(win, energyWin);
         Playing = false;
         OnMiniGameEnd.RemoveAllListeners();
     }
 
-    public async void PlayMiniGame()
+    public async void PlayMiniGame(string scene)
     {
         Playing = true;
+        sceneActive = scene;
 
         if (cts == null)
         {
             cts = new CancellationTokenSource();
             try
             {
-                await LoadSceneMiniGameAsync(cts.Token, scene);
+                await LoadSceneMiniGameAsync(cts.Token, sceneActive);
             }
             catch (OperationCanceledException ex)
             {
@@ -76,7 +79,7 @@ public class MiniGame : ScriptableObject
 
     }
 
-    public void ListenToMiniGameEnd(UnityAction<bool> onEnd)
+    public void ListenToMiniGameEnd(UnityAction<bool, int> onEnd)
     {
         OnMiniGameEnd.AddListener(onEnd);
     }

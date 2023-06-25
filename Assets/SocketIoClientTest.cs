@@ -62,14 +62,14 @@ public class SocketIoClientTest : MonoBehaviour
         await client.ConnectAsync();   
     }
 
-    private void SendMalus()
+    public void SendMalus()
     {
         client.EmitAsync("Malus");
     }
 
     public void SendRotate(string rotation)
     {
-        client.EmitAsync("Rotate-Module", rotation);
+        client.EmitAsync("rotate-Module", rotation);
     }
 
     private void ManageMapData(string mapJson)

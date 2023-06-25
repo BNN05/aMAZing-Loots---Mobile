@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4555224279647012447}
   - component: {fileID: 3889267792863651573}
   - component: {fileID: 2081013238098523821}
-  - component: {fileID: 7757987839418864569}
   - component: {fileID: 8788785629712549959}
+  - component: {fileID: 170382689377567468}
   m_Layer: 0
   m_Name: Bloc
   m_TagString: Untagged
@@ -97,21 +97,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 52.5, y: 52.5}
   m_EdgeRadius: 0
---- !u!114 &7757987839418864569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2660945606476751534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865e3271c07525541ad2ab6f70ec273c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 2.5
-  _touchInput: 0
-  _rotateBack: 0
 --- !u!114 &8788785629712549959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +126,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &170382689377567468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660945606476751534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fad24f92da5c444ba65ae0a1ecaf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+  _touchInput: 0
+  _rotateBack: 0
+  _rotatingBackward: 0
 --- !u!1 &8413102684699987238
 GameObject:
   m_ObjectHideFlags: 0

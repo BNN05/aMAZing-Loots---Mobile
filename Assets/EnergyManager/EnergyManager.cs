@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnergyManager : MonoBehaviour
 {
 
-    private int _energy = 0;
+    public int _energy {get; private set; } = 0;
 
     [SerializeField]
     private TMP_Text _text;

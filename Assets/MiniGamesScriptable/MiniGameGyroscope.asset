@@ -10,6 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ed6b240793c7d848ba36111d1e5a63f, type: 3}
-  m_Name: MiniGameWire2
+  m_Name: MiniGameGyroscope
   m_EditorClassIdentifier: 
-  scene: WireGame 2
+  scene:
+  - MapGyro1
+  - MapGyro2
+  sceneActive: MapGyro1
+  EarnMiniGame: 10

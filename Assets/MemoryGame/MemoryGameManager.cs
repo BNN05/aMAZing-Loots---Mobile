@@ -31,6 +31,7 @@ public class MemoryGameManager : MonoBehaviour
     private bool ending = false;
     public float timeToEnd = 3f;
     private float timeEnding = 0f;
+    private bool win = false;
 
     private void Start()
     {
@@ -83,7 +84,11 @@ public class MemoryGameManager : MonoBehaviour
         {
             timeEnding += Time.deltaTime;
             if (timeEnding >= timeToEnd)
+            {
+                GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
+                obj.GetComponent<GameHandler>().EndMiniGame(win);
                 Debug.Log("finished !");
+            }
         }
     }
 
@@ -129,6 +134,7 @@ public class MemoryGameManager : MonoBehaviour
     public void Win()
     {
         ending = true;
+        win = true;
         textWin.gameObject.SetActive(true);
         RevealAll();
     }

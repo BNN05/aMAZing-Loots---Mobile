@@ -143,7 +143,7 @@ public class GameGrid : MonoBehaviour
         if (_filledPipes == _winningWay.Count)
         {
             GameObject obj = GameObject.FindGameObjectWithTag("MiniGameManager");
-            obj.GetComponent<GameHandler>().EndMiniGame();
+            obj.GetComponent<GameHandler>().EndMiniGame(true);
         }
         else if (ws != null)
         {

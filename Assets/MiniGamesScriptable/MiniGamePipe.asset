@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed6b240793c7d848ba36111d1e5a63f, type: 3}
   m_Name: MiniGamePipe
   m_EditorClassIdentifier: 
-  scene: PipeScene
+  scene:
+  - PipeScene
+  sceneActive: PipeScene
+  EarnMiniGame: 10

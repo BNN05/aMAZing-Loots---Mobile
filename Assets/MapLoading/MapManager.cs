@@ -40,8 +40,6 @@ public class MapManager : MonoBehaviour
 
     private bool _rotation = false;
 
-    public bool IsRotating { get { return _rotation; } }
-
     private Map _map = new Map();
 
     private BlocHandler _blocToRotate;
@@ -52,9 +50,11 @@ public class MapManager : MonoBehaviour
     private SocketIoClientTest socketIOClient;
 
     public TMP_Text textLever;
+    public TMP_Text textRotation;
     public int leverDown = 0;
 
     public BlocHandler blockSelected;
+    public int CostMalus = 5;
 
     // Start is called before the first frame update
     private void Start()
@@ -82,6 +82,15 @@ public class MapManager : MonoBehaviour
     {
         InitMapLayout();
     }
+
+    private void OnEndRotation()
+    {
+        MakeRotateMapManager rotate = blockSelected.gameObject.GetComponent<MakeRotateMapManager>();
+        rotate.RemoveListenerOnRotation(OnEndRotation);
+        //textRotation.gameObject.SetActive(false);
+        _rotation = false;
+    }
+
     private void InitMapLayout()
     {
         GridLayoutGroup layoutGrid = Grid.GetComponent<GridLayoutGroup>();
@@ -102,13 +111,13 @@ public class MapManager : MonoBehaviour
         _gameManager.MiniGameList.Where(m => m.Playing).FirstOrDefault().ListenToMiniGameEnd(MiniGameEnd);
     }
 
-    public void MiniGameEnd(bool win)
+    public void MiniGameEnd(bool win, int energyWin)
     {
-        if (win)
-        {
             CameraMap.SetActive(true);
             Canvas.gameObject.SetActive(true);
-            _energyPlayer.ModifyEnergy(1);
+        if (win)
+        {
+            _energyPlayer.ModifyEnergy(energyWin);
         }
     }
     private void ErrorHandler()
@@ -158,22 +167,44 @@ public class MapManager : MonoBehaviour
 
     private void OnLeverDown(string leverDown)
     {
-
+        int nbLever = JsonConvert.DeserializeObject<int>(leverDown);
+        textLever.text = "LEVIER " + leverDown + "/5";
     }
 
     public void SendMalus()
     {
-        SocketIoClientTest.Instance.SendMalus();
+        if (_energyPlayer._energy >= CostMalus)
+        {
+            _energyPlayer.ModifyEnergy(-CostMalus);
+            SocketIoClientTest.Instance.SendMalus();
+        }
     }
 
     public void SendRotation(int direction)
     {
-
+        if (_energyPlayer._energy >= 1 && !_rotation)
+        {
+            _energyPlayer.ModifyEnergy(-1);
+            MakeRotateMapManager rotate = blockSelected.gameObject.GetComponent<MakeRotateMapManager>();
+            rotate.AddListenerOnRotation(OnEndRotation);
+            _rotation = true;
+            //textRotation.gameObject.SetActive(true);
+            
+            rotate.ForceRotation(direction);
+            Rotation rotation = new Rotation();
+            rotation.direction = direction;
+            rotation.x = blockSelected.Bloc.x;
+            rotation.y = blockSelected.Bloc.y;
+            string rotationJson = JsonConvert.SerializeObject(rotation);
+            socketIOClient.SendRotate(rotationJson);
+        }
     }
 
     private void OnRotationComputer(string rotation)
     {
-
+        Rotation rotationObj = JsonConvert.DeserializeObject<Rotation>(rotation);
+        MakeRotateMapManager rotate = SortedListBloc[rotationObj.x][rotationObj.y].GetComponent<MakeRotateMapManager>();
+        rotate.ForceRotation(rotationObj.direction);
     }
 
     private void OnGameOver(string winComputer)

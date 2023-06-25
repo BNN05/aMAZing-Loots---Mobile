@@ -18,12 +18,13 @@ public class GameHandler : MonoBehaviour
 
         System.Random rand = new System.Random();
         PlayingMiniGame = MiniGameList[rand.Next(MiniGameList.Count)];
-        PlayingMiniGame.PlayMiniGame();
+        string scene = PlayingMiniGame.scene[rand.Next(PlayingMiniGame.scene.Length)];
+        PlayingMiniGame.PlayMiniGame(scene);
     }
 
-    public void EndMiniGame()
+    public void EndMiniGame(bool win)
     {
-        PlayingMiniGame.MiniGameEnd(true);
+        PlayingMiniGame.MiniGameEnd(win, PlayingMiniGame.EarnMiniGame);
         PlayingMiniGame = null;
     }
 }

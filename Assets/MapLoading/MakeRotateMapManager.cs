@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Rotation
-{
-    public int direction;
-    public int x;
-    public int y;
-}
-
-public class MakeRotate : MonoBehaviour
+public class MakeRotateMapManager : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 0.1f;
@@ -19,6 +12,7 @@ public class MakeRotate : MonoBehaviour
 
 
     private Quaternion _objectiveRot;
+    private Quaternion _originalRot;
     private bool _rotating = false;
     private float _count = 0.0f;
 
@@ -34,8 +28,19 @@ public class MakeRotate : MonoBehaviour
         _objectiveRot = Quaternion.Euler(0, 0, 90);
     }
 
-    public void ForceRotation()
+    public void ForceRotation(int rotation)
     {
+        if (rotation == 1)
+        {
+            _rotateBack = true;
+            _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - 90);
+        }
+        else
+        {
+            _rotateBack = false;
+            _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 90);
+        }
+        _originalRot = this.transform.rotation;
         _rotating = true;
     }
 
@@ -45,42 +50,21 @@ public class MakeRotate : MonoBehaviour
         if (_blocked)
             return;
 
-        if (Input.touchCount > 0 && _touchInput)
-        {
-            Touch touchInfo = Input.GetTouch(0);
-            if (touchInfo.phase == TouchPhase.Began)
-            {
-                Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(touchInfo.position);
-
-                Vector2 touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
-
-                RaycastHit2D hitInfo = Physics2D.Raycast(touchPosWorld2D, Camera.main.transform.forward);
-
-                if (hitInfo.collider != null && hitInfo.collider.gameObject == this.gameObject && !_rotating)
-                    _rotating = true;
-            }
-        }
-
         if (_rotating)
         {
             transform.rotation = Quaternion.Lerp(this.transform.rotation, _objectiveRot, _speed * _count);
             _count += Time.deltaTime;
-            float angle = Quaternion.Angle(transform.rotation, _objectiveRot); 
+            float angle = Quaternion.Angle(transform.rotation, _objectiveRot);
             if (angle <= 1)
             {
-                if (!_rotatingBackward)
-                    transform.Rotate(0, 0, angle);
-                else
-                    transform.Rotate(0, 0, -angle);
-
-                if (_rotateBack && Mathf.Round(transform.rotation.eulerAngles.z) == 90)
+                transform.Rotate(0, 0, angle);
+                transform.rotation = _objectiveRot;
+                if (_rotateBack && Mathf.Round(transform.rotation.eulerAngles.z) == _objectiveRot.eulerAngles.z)
                 {
-                    _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - 90);
                     _rotatingBackward = true;
                 }
-                else
+                else if (Mathf.Round(transform.rotation.eulerAngles.z) == _objectiveRot.eulerAngles.z)
                 {
-                    _objectiveRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 90);
                     _rotatingBackward = false;
                 }
                 _count = 0.0f;
